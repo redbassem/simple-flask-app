@@ -35,7 +35,7 @@ def health_check():
     try:
         conn = get_db_connection()
         cursor = conn.cursor()
-        cursor.execute("SELECT NOW() as current_time, VERSION() as mysql_version")
+        cursor.execute("SELECT NOW(), VERSION()")
         result = cursor.fetchone()
         health_data['components']['database'] = {
             'status': 'connected',
